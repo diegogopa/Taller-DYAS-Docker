@@ -3,9 +3,9 @@
 # Uso (PowerShell):  $env:COMPANERO_USER="usuario-del-compañero"; docker compose -f docker-compose.companero.yaml up -d
 services:
   web:
-    image: ${COMPANERO_USER:?Defina COMPANERO_USER con el usuario de Docker Hub del compañero}/friendlyhello:latest
+    image: ${COMPANERO_USER:?Defina COMPANERO_USER con el usuario de Docker Hub del compañero}/friendlyhello:v1
     ports:
-      - "4000:8000"
+      - "4000:80"
     depends_on:
       redis:
         condition: service_healthy
