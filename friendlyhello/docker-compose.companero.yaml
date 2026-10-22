@@ -1,0 +1,21 @@
+# Ejercicio 2 (Parte 3): igual que docker-compose.yaml, pero usando la imagen
+# que publicó un compañero en Docker Hub.
+# Uso (PowerShell):  $env:COMPANERO_USER="usuario-del-compañero"; docker compose -f docker-compose.companero.yaml up -d
+services:
+  web:
+    image: ${COMPANERO_USER:?Defina COMPANERO_USER con el usuario de Docker Hub del compañero}/friendlyhello:latest
+    ports:
+      - "4000:8000"
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis:8.8
+    command: redis-server --appendonly yes
+    volumes:
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5

@@ -1,0 +1,16 @@
+# Datos de Redis generados por Docker Compose (no se suben al repositorio)
+friendlyhello/data/
+data/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+
+# Variables de entorno locales
+.env
+
+# Archivos del sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
